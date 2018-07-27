@@ -73,20 +73,25 @@ pageObj.reload({
                      *     页码为最后一页时,  now-page在第二个方块
                      */
                     if(totalPage <= 3){
-                        // 生成页码个数的分页块
-                        for(var i = 1; i <= totalPage; i++){
-                            // 当前页码添加样式
-                            var className = currentPage == i ? "now-page" : "";
-                            htmlStr+="<a href=\"javascript:;\" class=\"" + className + "\">" + i + "</a>";
-                        }
-                        // 追加内容到容器
-                        $(_this).html(htmlStr);
-                        // 页码添加点击事件
-                        $(".pages a").click((e) => {
+                        if(totalPage > 1){
+                            // 生成页码个数的分页块
+                            for(var i = 1; i <= totalPage; i++){
+                                // 当前页码添加样式
+                                var className = currentPage == i ? "now-page" : "";
+                                htmlStr+="<a href=\"javascript:;\" class=\"" + className + "\">" + i + "</a>";
+                            }
+                            // 追加内容到容器
+                            $(_this).html(htmlStr);
+                            // 页码添加点击事件
+                            $(".pages a").click((e) => {
                                 // 点击跳转到目标页码
                                 var pageNo = $(e.target).html();
                                 fetchData(pageSize, pageNo);
-                        })
+                            })
+                        } else {
+                            // 如果一页没有,则清空分页条
+                            $(domObj).html('')
+                        }
                     } else {
                         if(currentPage != totalPage){
                             htmlStr+="<a href=\"javascript:;\"  class=\"pre-page\" data-page='" + (currentPage - 1) + "'>上一页</a>"+
@@ -122,6 +127,11 @@ pageObj.reload({
                             fetchData(pageSize, pageNo);
                         })
                     }
+
+                    // 执行用户配置的initComplete方法
+                    if(ops.initComplete != null){
+                        ops.initComplete();
+                    }
                 },
                 error : function(){
                     console.log("加载出错...");
@@ -156,7 +166,7 @@ pageObj.reload({
             getRes: function(r){},//用户自定义方法
             pageSize: 10,// 每页显示的记录数
             pageNo: 1,// 页码
-            mapping: null// 该插件要求后台返回的数据包括  currentPage  pageSize  total   如果用户的数据结构不是这样的,可以通过此属性配置映射关系
+            mapping: null,// 该插件要求后台返回的数据包括  currentPage  pageSize  total   如果用户的数据结构不是这样的,可以通过此属性配置映射关系
             /**
              * mapping: function(data){
              *    // data为服务器返回的数据
@@ -167,6 +177,7 @@ pageObj.reload({
              *    }
              *   }
              */
+            initComplete: null // 当插件初始化完成时执行,可以做一些dom操作
         };
         var ops = $.extend(dft,options);
         // 记录下dom信息以便后期调用
