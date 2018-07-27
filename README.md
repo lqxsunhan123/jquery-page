@@ -4,7 +4,7 @@
 1. 数据小于等于3页,这时候不会出现分页条，而是n个分页代码块
 2. 数据大于3页,出现分页条
 3. 数据只有一页时,隐藏分页条
-// 用法
+4. csdn介绍用法: https://blog.csdn.net/lqx_sunhan/article/details/81251916
 ```
 var pageObj = $("xx").page({
     url: '', // 后台接口地址
