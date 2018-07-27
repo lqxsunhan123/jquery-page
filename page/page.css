@@ -1,0 +1,51 @@
+.pages {
+    text-align: right;
+}
+
+.pages a {
+    display: inline-block;
+    box-sizing: border-box;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    font-size: 12px;
+    font-weight: normal;
+    color: #666;
+    border: solid 1px #e5e5e5;
+    background-color: #fff;
+}
+
+.pages a:hover, .pages a.now-page {
+    color: #fff;
+    background-color: #4164aa;
+    border-color: #4164aa;
+}
+
+.pages span {
+    margin: 0 10px;
+}
+
+.pages{
+    font-size: 12px;
+    font-weight: normal;
+    color: #666;
+}
+.pages-in{
+    box-sizing: border-box;
+    height: 30px;
+    width: 50px;
+    text-align: center;
+    border: solid 1px #e5e5e5;
+}
+.confirm-btn{
+    display: inline-block;
+    box-sizing: border-box;
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    color: #666;
+    background-color: #fff;
+    border: solid 1px #e5e5e5;
+    outline: none;
+    cursor: pointer;
+}
