@@ -22,3 +22,5 @@ pageObj.reload({
         // 这个作为reload方法的第二个参数是个函数,若有此参数,则分页器会以这个方法作为处理数据的方法
 })
 ```
+![1.png]("https://github.com/lqxsunhan123/jquery-page/blob/master/page/img/1.jpg" "1.png")
+![2.png]("https://github.com/lqxsunhan123/jquery-page/blob/master/page/img/2.jpg" "2.png")
